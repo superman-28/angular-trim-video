@@ -26,7 +26,9 @@
     align-items: center;
     .metrics{
       margin: 0.4rem;
-      color: #444;
+      color: #eee;
+      font-family: Helvetica, sans-serif;
+      font-size: 0.8rem;
     }
   }
   @mixin range-slider($width, $height, $input-top, $input-bg-color, $input-thumb-color, $float:none, $input-height:0.2rem, $input-border-radius:1rem) {
