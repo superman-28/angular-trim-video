@@ -1,0 +1,92 @@
+
+@mixin thumb{
+  pointer-events: all;
+  position: relative;
+  z-index: 10;
+  outline: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+  //border: none;
+  border-radius: 50%;
+  background: #345DBB;
+  transition: all 0.5s;
+  &:hover{
+    transform: scale(1.45);
+  }
+}
+
+
+:host{
+  display: block;
+  width: 90%;
+  margin: auto;
+  height: 2rem;
+  .flex-container{
+    display: flex;
+    align-items: center;
+    .metrics{
+      margin: 0.4rem;
+      color: #444;
+    }
+  }
+  @mixin range-slider($width, $height, $input-top, $input-bg-color, $input-thumb-color, $float:none, $input-height:0.2rem, $input-border-radius:1rem) {
+    position: relative;
+    width: $width;
+    height: $height;
+    float: $float;
+    text-align: center;
+            
+    input[type="range"] {
+      pointer-events: none;
+      position: absolute;
+      appearance: none;
+      border: none;
+      border-radius: $input-border-radius;
+      background: $input-bg-color;
+      box-shadow: inset 0 1px 0 0 darken($input-bg-color,15%), inset 0 -1px 0 0 darken($input-bg-color,10%);
+      left: 0;
+      top: $input-top;
+      width: $width;
+      outline: none;
+      height: $input-height;
+      margin: 0;
+      padding: 0;
+    }  
+    
+    input[type="range"]::-webkit-slider-thumb {
+      @include thumb;
+      -webkit-appearance: none;
+    }
+    
+    input[type="range"]::-moz-range-thumb {
+      @include thumb;
+      -moz-appearance: none;
+    }
+  
+    input[type="range"]::-ms-thumb {
+      @include thumb;
+      -ms-appearance: none;
+    }
+    
+    input[type=range]::-moz-range-track {
+      position: relative;
+      z-index: -1;
+      background-color: rgba(0, 0, 0, 1);
+      border: 0;
+    }
+    
+    input[type=range]:last-of-type::-moz-range-track {
+      -moz-appearance: none;
+      background: none transparent;
+      border: 0;
+    }
+    
+    input[type=range]::-moz-focus-outer {
+      border: 0;
+    }
+  }
+  
+  section.range-slider {
+    @include range-slider(100%, 1.6rem, 0.6rem, #F1EFEF, #413F41, left);
+  }
+}
